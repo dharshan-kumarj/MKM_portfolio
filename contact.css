@@ -307,3 +307,25 @@ body {
   }
 }
 
+@media (max-width: 767.98px) {
+  .mobile-header-content {
+    margin-top: 60px; /* Adjust this value based on your navbar height */
+  }
+
+  .custom-image-container {
+    display: none; /* Hide the image on mobile to save space */
+  }
+
+  header .row {
+    flex-direction: column;
+  }
+
+  header .col-md-7 {
+    order: 2;
+  }
+
+  header .col-md-5 {
+    order: 1;
+  }
+}
+
