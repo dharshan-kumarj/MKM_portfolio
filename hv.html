@@ -37,8 +37,8 @@
 
         @media (max-width: 991px) {
             .navbar-custom .navbar-nav {
-                background-color: #0200A6;
                 padding: 10px;
+                max-height: 1000px;
             }
             
             .navbar-custom .nav-item.active .nav-link {
@@ -51,7 +51,7 @@
             position: relative;
             height: 100vh;
             min-height: 300px;
-            max-height: 500px;
+            max-height: 1000px;
             overflow: hidden;
         }
 
@@ -65,8 +65,8 @@
         .text-overlay {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            left: 10%;
+            transform: translateY(-50%);
             width: 90%;
             max-width: 1000px;
             color: white;
@@ -76,7 +76,7 @@
         @media (max-width: 768px) {
             .bg-image {
                 height: 50vh;
-                min-height: 200px;
+                min-height: 800px;
             }
 
             .text-overlay h1 {
@@ -143,7 +143,7 @@
             <div class="col-12 position-relative bg-image">
                 <img src="./Images/Home/Flight.png" class="img-fluid w-100" alt="Background Image">
                 <div class="text-overlay text-center">
-                    <h1 class="display-4 text-start fw-bold">Global Solutions, Unmatched Quality, Your Trusted Partner.</h1>
+                    <h1 class="display-4 text-start fw-bold">Global Solutions, Unmatched <br>Quality, Your Trusted Partner.</h1>
                     <p class="lead">At MKM Group of Companies, we are dedicated to delivering unparalleled quality and innovative solutions across a diverse range of industries. Our commitment to excellence, customer satisfaction, and industry-leading standards makes us your trusted partner worldwide.</p>
                 </div>
             </div>
