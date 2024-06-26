@@ -111,6 +111,73 @@
                 font-size: 0.875rem;
             }
         }
+        @media (max-width: 768px) {
+            .text-overlay {
+                top: auto;
+                bottom: 20%;
+                left: 5%;
+                transform: none;
+                width: 90%;
+            }
+
+            .text-overlay h1 {
+                font-size: 2.4rem;
+                line-height: 1.2;
+                margin-bottom: 6.6rem;
+            }
+
+            .text-overlay p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+        }
+        .button-group {
+            margin-top: 2rem;
+        }
+
+        .button-group .btn {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            margin-right: 1rem;
+            border-radius: 25px;
+        }
+
+        .btn-primary {
+            background-color: #0000FF;
+            border-color: #0000FF;
+        }
+
+        .btn-outline-light {
+            color: white;
+            border-color: #0000FF;
+        }
+
+        .btn-outline-light:hover {
+            background-color: white;
+            color: #0000FF;
+        }
+
+        @media (max-width: 768px) {
+    .button-group {
+        margin-top: 1rem;
+    }
+
+    .button-group .btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        display: inline-block;
+        width: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .button-group .btn {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -158,6 +225,10 @@
                 <div class="text-overlay">
                     <h1 class="display-4 text-start fw-bold">Global Solutions, Unmatched <br>Quality, Your Trusted Partner.</h1>
                     <p class="lead">At MKM Group of Companies, we are dedicated to delivering unparalleled quality and innovative solutions across a diverse range of industries. Our commitment to excellence, customer satisfaction, and industry-leading standards makes us your trusted partner worldwide.</p>
+                    <div class="button-group">
+                        <button class="btn btn-primary">Contact Us</button>
+                        <button class="btn btn-outline-light" style="color: #0000FF;">Learn more</button>
+                    </div>
                 </div>
             </div>
         </div>
