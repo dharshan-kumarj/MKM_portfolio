@@ -1,0 +1,261 @@
+/* Navbar styles */
+nav {
+  box-shadow: 0 0 14px black;
+}
+
+.navbar-custom {
+  background-color: #0200A6;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+}
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Navbar toggler styles */
+.navbar-toggler {
+  border: 0 !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+.toggler-icon {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  display: block;
+  transition: all 0.2s;
+}
+
+.middle-bar {
+  margin: 5px auto;
+}
+
+.navbar-toggler .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+
+.navbar-toggler .middle-bar {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.navbar-toggler .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
+}
+
+.navbar-toggler.collapsed .top-bar,
+.navbar-toggler.collapsed .bottom-bar {
+  transform: rotate(0);
+}
+
+.navbar-toggler.collapsed .middle-bar {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.navbar-toggler.collapsed .toggler-icon {
+  background-color: #ffffff;
+}
+
+/* Footer styles */
+.footer {
+  background-color: #0200A6;
+  color: white;
+  padding: 30px 0;
+}
+
+.footer a {
+  color: #d4d4d4;
+}
+
+.social-icons a {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+/* Services section styles */
+.services-section {
+  background-color: #f8f9fa;
+}
+
+.services-section .card {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.services-section .btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+}
+
+.services-section .carousel-control-prev,
+.services-section .carousel-control-next {
+  width: 5%;
+  opacity: 1;
+}
+
+.services-section .carousel-control-prev-icon,
+.services-section .carousel-control-next-icon {
+  background-color: #0056b3;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.services-section .side-card {
+  transform: scale(0.8);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.services-section .main-card {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.services-section .btn-primary {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.services-section .btn-primary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Desktop styles for services section */
+@media (min-width: 992px) {
+  .services-section-desktop .side-card {
+      transform: scale(0.8);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+  }
+
+  .services-section-desktop .main-card {
+      transform: scale(1);
+      opacity: 1;
+      transition: all 0.3s ease;
+  }
+}
+
+/* Mobile styles for services section */
+@media (max-width: 991px) {
+  .services-section-desktop {
+      display: none;
+  }
+  .services-section-mobile .carousel-control-prev,
+  .services-section-mobile .carousel-control-next {
+      width: auto;
+      padding: 0 15px;
+  }
+  .services-section-mobile .carousel-control-prev-icon,
+  .services-section-mobile .carousel-control-next-icon {
+      background-image: none;
+  }
+  .services-section-mobile .carousel-control-prev-icon::after,
+  .services-section-mobile .carousel-control-next-icon::after {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #0056b3;
+      border-radius: 50%;
+  }
+  .services-section-mobile .carousel-control-prev-icon::after {
+      content: "<";
+  }
+  .services-section-mobile .carousel-control-next-icon::after {
+      content: ">";
+  }
+}
+
+@media (min-width: 992px) {
+  .services-section-mobile {
+      display: none;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .navbar-custom .container-fluid {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+
+  .navbar-brand {
+      font-size: 1.2rem;
+      padding-left: 0;
+  }
+
+  .navbar-toggler {
+      padding-right: 0;
+  }
+
+  .social-icons {
+      margin-top: 10px;
+  }
+
+  .navbar-nav {
+      margin-top: 10px;
+  }
+
+  .navbar-logo {
+      height: 30px;
+  }
+
+  .services-section .btn-lg {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section .carousel-control-prev,
+  .services-section .carousel-control-next {
+      width: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-logo {
+      height: 25px;
+  }
+
+  .services-section .carousel-control-prev,
+  .services-section .carousel-control-next {
+      width: 15%;
+  }
+
+  .services-section .col-2 {
+      width: 20%;
+  }
+  .services-section .col-8 {
+      width: 60%;
+  }
+}
