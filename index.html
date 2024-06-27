@@ -6,6 +6,7 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link ref="stylesheet" href="./Source/Components.css">
     <style>
         .navbar-custom {
             transition: background-color 0.3s ease;
@@ -65,7 +66,7 @@
             }
             
             .navbar-custom .nav-item {
-                margin: 5px 0;
+                margin: 3px 0;
             }
             
             .navbar-custom .nav-item.active .nav-link {
@@ -255,6 +256,97 @@
             }
         }
 
+        @media (max-width: 768px) {
+        h1.display-4 {
+            font-size: 2.5rem;
+        }
+        h2.display-4 {
+            font-size: 2rem;
+        }
+        }
+
+        .img-fluid {
+        max-height: 400px;
+        object-fit: cover;
+        }
+
+        .stats-row {
+        position: relative;
+        }
+
+        .stat-item {
+        position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        height: 90%;
+        width: 3px;
+        background-color: #030303;
+        }
+
+.overlay-line {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  width: 3px;
+  height: 100%;
+  background-color: #030303;
+}
+
+@media (max-width: 991.98px) {
+  .overlay-line {
+    display: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .stat-item:not(:last-child)::after {
+    display: none;
+  }
+  
+  .stat-item:not(:last-child) {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.img-fluid {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.display-4 {
+  font-weight: 700;
+}
+
+.text-primary {
+  color: #0000FF !important;
+}
+
+h1.display-4 {
+  font-size: 2.5rem;
+}
+
+@media (min-width: 992px) {
+  h1.display-4 {
+    font-size: 3rem;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -329,6 +421,42 @@
         </div>
     </div>
 
+    <div class="container-fluid py-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h6 class="text-primary text-uppercase mb-3">OUR COMPANY</h6>
+            <h1 class="display-4 mb-4">We provide professional solutions to deliver safe & efficient services</h1>
+            <p class="mb-4">We excel in delivering top-tier services and products across diverse sectors such as travel, fashion, trade, and healthcare. With our global expertise and unwavering commitment to quality, we consistently provide exceptional solutions that drive success for our clients worldwide.</p>
+            <a href="#" class="btn btn-primary px-4 py-2">Get a Quote</a>
+            <div class="row mt-5 stats-row">
+              <div class="col-md-4 mb-3 mb-md-0 stat-item">
+                <div class="text-center">
+                  <h2 class="display-4 fw-bold">10+</h2>
+                  <p class="text-muted">Years of Experience</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3 mb-md-0 stat-item">
+                <div class="text-center">
+                  <h2 class="display-4 fw-bold">157</h2>
+                  <p class="text-muted">Satisfied Clients</p>
+                </div>
+              </div>
+              <div class="col-md-4 stat-item">
+                <div class="text-center">
+                  <h2 class="display-4 fw-bold">54</h2>
+                  <p class="text-muted">Satisfied Clients</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="position-relative d-none d-lg-block">
+              <img src="./Images/Home/Flight.png" class="img-fluid rounded" alt="Worker">
+            </div>
+          </div>
+        </div>
+      </div>
+
     <!-- Desktop Layout -->
     <div class="container-fluid services-section-desktop py-5 d-none d-lg-block">
         <h2 class="text-center mb-5 py-5">Services We Offer</h2>
@@ -368,6 +496,8 @@
             </button>
         </div>
     </div>
+
+
 
     <footer class="footer py-5">
         <div class="container-fluid">
@@ -538,6 +668,43 @@
                     navbar.classList.remove('scrolled');
                 }
             });
+
+            //Text Effect 
+            function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function startCountAnimation() {
+            const counters = document.querySelectorAll('.stat-item .display-4');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText);
+                animateValue(counter, 0, target, 2000);
+            });
+        }
+
+        // Intersection Observer to trigger animation when stats are in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCountAnimation();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-row');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
         });
     </script>
 
