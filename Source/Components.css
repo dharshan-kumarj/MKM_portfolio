@@ -5,6 +5,38 @@ nav {
 
 .navbar-custom {
   background-color: #0200A6;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-custom.transparent {
+  background-color: transparent !important;
+}
+
+.navbar-custom.scrolled {
+  background-color: #0200A6;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .social-icons a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.navbar-custom .navbar-nav {
+  margin: 0 auto;
+}
+
+.navbar-custom .nav-item {
+  margin: 0 35px;
+}
+
+.navbar-custom .nav-item.active .nav-link {
+  border-bottom: 2px solid white;
+}
+
+.navbar-custom .social-icons a {
+  margin-left: 15px;
 }
 
 .navbar-nav .nav-link {
@@ -17,13 +49,10 @@ nav {
   font-weight: bold;
 }
 
-.navbar-nav .nav-link.active {
-  border-bottom: 2px solid white;
-}
-
 .navbar-logo {
-  height: 40px;
+  height: 35px;
   width: auto;
+  margin-right: 10px;
 }
 
 /* Navbar toggler styles */
@@ -80,6 +109,46 @@ nav {
   background-color: #ffffff;
 }
 
+/* Media Queries */
+@media (min-width: 992px) {
+  .navbar-custom .navbar-collapse {
+      display: flex !important;
+      flex-basis: auto;
+  }
+  .navbar-custom .navbar-nav {
+      margin-right: auto;
+      margin-left: 0;
+  }
+  .navbar-custom .social-icons {
+      margin-left: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-custom .navbar-nav {
+      padding: 10px;
+      max-height: 1000px;
+  }
+  .navbar-custom .nav-item {
+      margin: 3px 0;
+  }
+  .navbar-custom .nav-item.active .nav-link {
+      border-bottom: none;
+      text-decoration: underline;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-custom .navbar-brand {
+      font-size: 1.2rem;
+  }
+  .navbar-custom .social-icons {
+      margin-top: 10px;
+  }
+  .navbar-custom .social-icons a {
+      margin-left: 10px;
+  }
+}
 /* Footer styles */
 .footer {
   background-color: #0200A6;
