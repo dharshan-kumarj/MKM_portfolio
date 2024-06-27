@@ -114,6 +114,7 @@
             padding: 100px 20px;
             text-align: center;
         }
+
         .footer-text {
             max-width: 600px;
             margin: auto;
@@ -122,44 +123,49 @@
             background: white;
             padding: 20px;
             border: 1px solid #dee2e6;
-        
         }
+
         .corner-decoration {
             position: absolute;
             z-index: 2;
         }
-       .top-left::before,
+
+        .top-left::before,
         .bottom-right::after {
             content: '';
             position: absolute;
             border: 5px solid #0d6efd;
         }
+
         .top-left::before {
-            margin-top: 15px ;
-            margin-left: -10px;           
+            margin-top: 15px;
+            margin-left: -10px;
             width: 75px;
             height: 75px;
             border-width: 5px 0 0 5px;
         }
+
         .bottom-right::after {
             margin-left: 460px;
             margin-top: 210px;
             width: 75px;
             height: 75px;
-            border-width: 0 5px 5px 0; 
+            border-width: 0 5px 5px 0;
         }
+
         .footer-image {
             position: absolute;
             z-index: 3;
         }
+
         .image-top-right {
             top: 10px;
             right: 23%;
             width: 300px;
             border-bottom: 5px solid purple;
-            border-left: 5px solid purple ;
-
+            border-left: 5px solid purple;
         }
+
         .image-bottom-left {
             bottom: 20px;
             left: 23%;
@@ -167,8 +173,33 @@
             border-bottom: 5px solid purple;
             border-right: 5px solid purple;
         }
-        .footer-text p{
+
+        .footer-text p {
             padding: 50px 100px;
+        }
+
+        @media (max-width: 767px) {
+            .footer-text {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .footer-text p {
+                padding: 20px;
+            }
+
+            .image-top-right,
+            .image-bottom-left {
+                position: static;
+                width: 100%;
+                margin: 10px 0;
+                border: none;
+            }
+
+            .top-left::before,
+            .bottom-right::after {
+                display: none;
+            }
         }
     </style>
 
@@ -180,12 +211,45 @@
     <div class="footer-image image-bottom-left">
         <img src="../Images/Service/photo_2024-06-24_21-23-55.jpg" class="img-fluid" alt="Boarding Pass">
     </div>
-    <div class="footer-text ">
+    <div class="footer-text">
         <div class="corner-decoration top-left"></div>
-    <div class="corner-decoration bottom-right"></div>
+        <div class="corner-decoration bottom-right"></div>
         <p>Choose us for our expertise, personalized service, and reliable support. Our team of seasoned professionals possesses extensive knowledge of global travel regulations and educational systems, allowing us to customize services to meet individual needs and ensure a hassle-free experience from start to finish.</p>
     </div>
 </div>
+
+<script>
+    function adjustFooterForMobile() {
+        const footerSection = document.querySelector('.footer-section');
+        const images = footerSection.querySelectorAll('.footer-image img');
+
+        if (window.innerWidth < 768) {
+            // Mobile view adjustments
+            images.forEach(img => {
+                // Example: Adjust image sources for mobile if necessary
+                if (img.alt === "Suitcase") {
+                    img.src = "../Images/Service/container.jpg";
+                } else if (img.alt === "Boarding Pass") {
+                    img.src = "../Images/Service/photo_2024-06-24_21-23-55.jpg";
+                }
+            });
+
+            // Add any other mobile-specific adjustments here
+        } else {
+            // Revert to default sources for larger screens
+            images.forEach(img => {
+                if (img.alt === "Suitcase") {
+                    img.src = "../Images/Service/container.jpg";
+                } else if (img.alt === "Boarding Pass") {
+                    img.src = "../Images/Service/photo_2024-06-24_21-23-55.jpg";
+                }
+            });
+        }
+    }
+
+    window.addEventListener('resize', adjustFooterForMobile);
+    document.addEventListener('DOMContentLoaded', adjustFooterForMobile);
+</script>
 
     <!--footer-->
 
@@ -333,6 +397,10 @@
             updateDesktopCards();
             setupMobileCarousel();
         });
+
+
+
+        //
     </script>
 </body>
 </html>
