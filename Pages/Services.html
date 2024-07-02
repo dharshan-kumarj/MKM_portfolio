@@ -60,7 +60,7 @@
     }
 
     .image-top-right {
-        top: 10px;
+        top: 0px;
         right: 23%;
         width: 300px;
         border-bottom: 5px solid purple;
@@ -200,7 +200,8 @@
     </div>
 </div>
 
-<!-- Content inside the box -->
+<!-- Content inside the box changes by JS and also has some default content in it-->
+ 
 <div class="footer-section">
     <div class="footer-image image-top-right d-lg-block d-none">
         <img src="../Images/Service/container.jpg" class="img-fluid" alt="Suitcase">
@@ -215,97 +216,107 @@
     </div>
 </div>
 
+<!--Javascript for moving the slide cards and also the same content in the below box-->
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const services = [
-            {
-                title: 'Medical Instruments',
-                content: 'Mediworld is your one-stop solution for cutting-edge medical instruments and healthcare solutions.',
-                image:'photo_2024-06-22_01-08-21.jpg'
-            },
-            {
-                title: 'Tourism and Visa Services',
-                content: 'We specialize in facilitating seamless travel experiences and educational opportunities globally.',
-                image: 'photo_2024-06-24_20-53-22.jpg'
-            },
-            {
-                title: 'Leather Accessories',
-                content: 'We pride ourselves on offering a range of premium leather goods that blend timeless elegance with modern functionality.',
-                image: 'photo_2024-06-24_21-23-55.jpg'
-            },
-            {
-                title: 'Textile and Garments',
-                content: 'We offer a diverse selection of premium textiles and stylish garments from luxurious fabrics for haute couture to versatile materials for everyday wear.',
-                image: 'photo_2024-06-24_21-25-37.jpg'
-            },
-            {
-                title: 'A to Z Import and Export',
-                content: 'We offer comprehensive A to Z Import and Export Support, designed to streamline global trade operations.',
-                image: 'photo_2024-06-25_21-07-19.jpg'
-            }
-        ];
-
-        let currentIndex = 0;
-
-        // Desktop Layout Functions
-        function updateDesktopCards() {
-            const leftIndex = (currentIndex - 1 + services.length) % services.length;
-            const rightIndex = (currentIndex + 1) % services.length;
-
-            updateCard('leftCard', services[leftIndex]);
-            updateCard('mainCard', services[currentIndex]);
-            updateCard('rightCard', services[rightIndex]);
-            updateBelowBox(services[currentIndex]);
+document.addEventListener('DOMContentLoaded', function() {
+    const services = [
+        {
+            title: 'Medical Instruments',
+            content: 'Mediworld is your one-stop solution for cutting-edge medical instruments and healthcare solutions.',
+            image: 'photo_2024-06-22_01-08-21.jpg'
+        },
+        {
+            title: 'Tourism and Visa Services',
+            content: 'We specialize in facilitating seamless travel experiences and educational opportunities globally.',
+            image: 'photo_2024-06-24_20-53-22.jpg'
+        },
+        {
+            title: 'Leather Accessories',
+            content: 'We pride ourselves on offering a range of premium leather goods that blend timeless elegance with modern functionality.',
+            image: 'photo_2024-06-24_21-23-55.jpg'
+        },
+        {
+            title: 'Textile and Garments',
+            content: 'We offer a diverse selection of premium textiles and stylish garments from luxurious fabrics for haute couture to versatile materials for everyday wear.',
+            image: 'photo_2024-06-24_21-25-37.jpg'
+        },
+        {
+            title: 'A to Z Import and Export',
+            content: 'We offer comprehensive A to Z Import and Export Support, designed to streamline global trade operations.',
+            image: 'photo_2024-06-25_21-07-19.jpg'
         }
+    ];
 
-        function updateCard(cardId, service) {
-            document.getElementById(cardId).innerHTML = `
-                <img src="${service.image}" class="card-img-top" alt="${service.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${service.title}</h5>
-                    <p class="card-text">${service.content}</p>
-                </div>
-            `;
-        }
+    let currentIndex = 0;
 
-        function updateBelowBox(service) {
-            document.getElementById('below-box-content').textContent = service.content;
-        }
+    // Desktop Layout Functions
+    function updateDesktopCards() {
+        const leftIndex = (currentIndex - 1 + services.length) % services.length;
+        const rightIndex = (currentIndex + 1) % services.length;
 
-        document.getElementById('prevBtn').addEventListener('click', function() {
-            currentIndex = (currentIndex - 1 + services.length) % services.length;
-            updateDesktopCards();
-        });
+        updateCard('leftCard', services[leftIndex]);
+        updateCard('mainCard', services[currentIndex]);
+        updateCard('rightCard', services[rightIndex]);
+        updateBelowBox(services[currentIndex]);
+    }
 
-        document.getElementById('nextBtn').addEventListener('click', function() {
-            currentIndex = (currentIndex + 1) % services.length;
-            updateDesktopCards();
-        });
+    function updateCard(cardId, service) {
+        document.getElementById(cardId).innerHTML = `
+            <img src="${service.image}" class="card-img-top" alt="${service.title}">
+            <div class="card-body">
+                <h5 class="card-title">${service.title}</h5>
+                <p class="card-text">${service.content}</p>
+            </div>
+        `;
+    }
 
-        // Mobile Layout Function
-        function setupMobileCarousel() {
-            const carouselInner = document.querySelector('#servicesCarousel .carousel-inner');
-            services.forEach((service, index) => {
-                const carouselItem = document.createElement('div');
-                carouselItem.classList.add('carousel-item');
-                if (index === 0) carouselItem.classList.add('active');
+    function updateBelowBox(service) {
+        document.getElementById('below-box-content').textContent = service.content;
+    }
 
-                carouselItem.innerHTML = `
-                    <div class="card">
-                        <img src="${service.image}" class="card-img-top" alt="${service.title}">
-                        <div class="card-body">
-                            <h5 class="card-title">${service.title}</h5>
-                            <p class="card-text">${service.content}</p>
-                        </div>
-                    </div>
-                `;
-                carouselInner.appendChild(carouselItem);
-            });
-        }
-
-        setupMobileCarousel();
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + services.length) % services.length;
         updateDesktopCards();
     });
+
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % services.length;
+        updateDesktopCards();
+    });
+
+    // Mobile Layout Function
+    function setupMobileCarousel() {
+        const carouselInner = document.querySelector('#servicesCarousel .carousel-inner');
+        services.forEach((service, index) => {
+            const carouselItem = document.createElement('div');
+            carouselItem.classList.add('carousel-item');
+            if (index === 0) carouselItem.classList.add('active');
+
+            carouselItem.innerHTML = `
+                <div class="card">
+                    <img src="${service.image}" class="card-img-top" alt="${service.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${service.title}</h5>
+                        <p class="card-text">${service.content}</p>
+                    </div>
+                </div>
+            `;
+            carouselInner.appendChild(carouselItem);
+        });
+
+        // Update the below box content initially and on slide change
+        updateBelowBox(services[currentIndex]);
+        $('#servicesCarousel').on('slid.bs.carousel', function () {
+            currentIndex = $(this).find('.carousel-item.active').index();
+            updateBelowBox(services[currentIndex]);
+        });
+    }
+
+    setupMobileCarousel();
+    updateDesktopCards();
+});
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz1NQ4qd3aUHUpBcf1JWkRPw7FUwA8Xk3si1P/VxgWM6" crossorigin="anonymous"></script>
