@@ -216,116 +216,6 @@
     </div>
 </div>
 
-<!--Javascript for moving the slide cards and also the same content in the below box-->
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const services = [
-        {
-            title: 'Medical Instruments',
-            content: 'Mediworld is your one-stop solution for cutting-edge medical instruments and healthcare solutions.',
-            image: 'photo_2024-06-22_01-08-21.jpg'
-        },
-        {
-            title: 'Tourism and Visa Services',
-            content: 'We specialize in facilitating seamless travel experiences and educational opportunities globally.',
-            image: 'photo_2024-06-24_20-53-22.jpg'
-        },
-        {
-            title: 'Leather Accessories',
-            content: 'We pride ourselves on offering a range of premium leather goods that blend timeless elegance with modern functionality.',
-            image: 'photo_2024-06-24_21-23-55.jpg'
-        },
-        {
-            title: 'Textile and Garments',
-            content: 'We offer a diverse selection of premium textiles and stylish garments from luxurious fabrics for haute couture to versatile materials for everyday wear.',
-            image: 'photo_2024-06-24_21-25-37.jpg'
-        },
-        {
-            title: 'A to Z Import and Export',
-            content: 'We offer comprehensive A to Z Import and Export Support, designed to streamline global trade operations.',
-            image: 'photo_2024-06-25_21-07-19.jpg'
-        }
-    ];
-
-    let currentIndex = 0;
-
-    // Desktop Layout Functions
-    function updateDesktopCards() {
-        const leftIndex = (currentIndex - 1 + services.length) % services.length;
-        const rightIndex = (currentIndex + 1) % services.length;
-
-        updateCard('leftCard', services[leftIndex]);
-        updateCard('mainCard', services[currentIndex]);
-        updateCard('rightCard', services[rightIndex]);
-        updateBelowBox(services[currentIndex]);
-    }
-
-    function updateCard(cardId, service) {
-        document.getElementById(cardId).innerHTML = `
-            <img src="${service.image}" class="card-img-top" alt="${service.title}">
-            <div class="card-body">
-                <h5 class="card-title">${service.title}</h5>
-                <p class="card-text">${service.content}</p>
-            </div>
-        `;
-    }
-
-    function updateBelowBox(service) {
-        document.getElementById('below-box-content').textContent = service.content;
-    }
-
-    document.getElementById('prevBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex - 1 + services.length) % services.length;
-        updateDesktopCards();
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', function() {
-        currentIndex = (currentIndex + 1) % services.length;
-        updateDesktopCards();
-    });
-
-    // Mobile Layout Function
-    function setupMobileCarousel() {
-        const carouselInner = document.querySelector('#servicesCarousel .carousel-inner');
-        services.forEach((service, index) => {
-            const carouselItem = document.createElement('div');
-            carouselItem.classList.add('carousel-item');
-            if (index === 0) carouselItem.classList.add('active');
-
-            carouselItem.innerHTML = `
-                <div class="card">
-                    <img src="${service.image}" class="card-img-top" alt="${service.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${service.title}</h5>
-                        <p class="card-text">${service.content}</p>
-                    </div>
-                </div>
-            `;
-            carouselInner.appendChild(carouselItem);
-        });
-
-        // Update the below box content initially and on slide change
-        updateBelowBox(services[currentIndex]);
-        $('#servicesCarousel').on('slid.bs.carousel', function () {
-            currentIndex = $(this).find('.carousel-item.active').index();
-            updateBelowBox(services[currentIndex]);
-        });
-    }
-
-    setupMobileCarousel();
-    updateDesktopCards();
-});
-
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz1NQ4qd3aUHUpBcf1JWkRPw7FUwA8Xk3si1P/VxgWM6" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-HKZ3m1PqIKZtK2FR2mFfNH1MUpPt8zYjWr0dGM7rhcjo6xgJHx8ANNCeIF5r47l" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>        
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Footer -->
 
@@ -381,6 +271,116 @@ document.addEventListener('DOMContentLoaded', function() {
         <p class="text-white-50 small mb-0">&copy; MKM Group of companies</p>
     </div>
 </footer>
+
+<!--Javascript for moving the slide cards and also the same content in the below box-->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const services = [
+            {
+                title: 'Medical Instruments',
+                content: 'Mediworld is your one-stop solution for cutting-edge medical instruments and healthcare solutions.',
+                image: 'photo_2024-06-22_01-08-21.jpg'
+            },
+            {
+                title: 'Tourism and Visa Services',
+                content: 'We specialize in facilitating seamless travel experiences and educational opportunities globally.',
+                image: 'photo_2024-06-24_20-53-22.jpg'
+            },
+            {
+                title: 'Leather Accessories',
+                content: 'We pride ourselves on offering a range of premium leather goods that blend timeless elegance with modern functionality.',
+                image: 'photo_2024-06-24_21-23-55.jpg'
+            },
+            {
+                title: 'Textile and Garments',
+                content: 'We offer a diverse selection of premium textiles and stylish garments from luxurious fabrics for haute couture to versatile materials for everyday wear.',
+                image: 'photo_2024-06-24_21-25-37.jpg'
+            },
+            {
+                title: 'A to Z Import and Export',
+                content: 'We offer comprehensive A to Z Import and Export Support, designed to streamline global trade operations.',
+                image: 'photo_2024-06-25_21-07-19.jpg'
+            }
+        ];
+    
+        let currentIndex = 0;
+    
+        // Desktop Layout Functions
+        function updateDesktopCards() {
+            const leftIndex = (currentIndex - 1 + services.length) % services.length;
+            const rightIndex = (currentIndex + 1) % services.length;
+    
+            updateCard('leftCard', services[leftIndex]);
+            updateCard('mainCard', services[currentIndex]);
+            updateCard('rightCard', services[rightIndex]);
+            updateBelowBox(services[currentIndex]);
+        }
+    
+        function updateCard(cardId, service) {
+            document.getElementById(cardId).innerHTML = `
+                <img src="${service.image}" class="card-img-top" alt="${service.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${service.title}</h5>
+                    <p class="card-text">${service.content}</p>
+                </div>
+            `;
+        }
+    
+        function updateBelowBox(service) {
+            document.getElementById('below-box-content').textContent = service.content;
+        }
+    
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + services.length) % services.length;
+            updateDesktopCards();
+        });
+    
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % services.length;
+            updateDesktopCards();
+        });
+    
+        // Mobile Layout Function
+        function setupMobileCarousel() {
+            const carouselInner = document.querySelector('#servicesCarousel .carousel-inner');
+            services.forEach((service, index) => {
+                const carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+                if (index === 0) carouselItem.classList.add('active');
+    
+                carouselItem.innerHTML = `
+                    <div class="card">
+                        <img src="${service.image}" class="card-img-top" alt="${service.title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${service.title}</h5>
+                            <p class="card-text">${service.content}</p>
+                        </div>
+                    </div>
+                `;
+                carouselInner.appendChild(carouselItem);
+            });
+    
+            // Update the below box content initially and on slide change
+            updateBelowBox(services[currentIndex]);
+            $('#servicesCarousel').on('slid.bs.carousel', function () {
+                currentIndex = $(this).find('.carousel-item.active').index();
+                updateBelowBox(services[currentIndex]);
+            });
+        }
+    
+        setupMobileCarousel();
+        updateDesktopCards();
+    });
+    
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGz1NQ4qd3aUHUpBcf1JWkRPw7FUwA8Xk3si1P/VxgWM6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-HKZ3m1PqIKZtK2FR2mFfNH1MUpPt8zYjWr0dGM7rhcjo6xgJHx8ANNCeIF5r47l" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
